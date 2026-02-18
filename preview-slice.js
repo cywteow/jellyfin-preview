@@ -2,7 +2,6 @@
 // @name         Jellyfin 10.11.5 - Perfect 10-Slice Preview
 // @version      16.0
 // @match        *://jellyfin.sgriosnetwork.xyz/*
-// @match        *://*/*
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
@@ -122,7 +121,7 @@
             card.dataset.hooked = "true";
             card.addEventListener("mouseenter", (e) => {
                 if (e.target.closest('.cardOverlayButton, .btnMarkRead, .btnPlay')) return;
-                if (currentCard) return;
+                if (currentCard) stop();
                 staticRect = card.getBoundingClientRect();
                 hoverTimeout = setTimeout(() => play(id, card), config.hoverDelaySeconds * 1000);
             });
